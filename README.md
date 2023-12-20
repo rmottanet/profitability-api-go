@@ -17,6 +17,6 @@ Se estiver se sentindo aventureiro, há o cálculo proporcional. Perfeito para c
 ## Como Usar
 
 1. Clone este repositório.
-2. Execute `go run main.go` e deixe a magia acontecer.
+2. Execute `go run main.go --help` e deixe a magia acontecer.
 
 Pronto! Agora você está no caminho para descobrir se está ficando rico ou apenas pagando mais impostos. Divirta-se! 💰
