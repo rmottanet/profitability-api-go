@@ -7,11 +7,15 @@ import (
 )
 
 type ResultPre struct {
-	ResultPre   float64
-	TaxRate  float64
+	ResultPre	float64
+	TaxRate		float64
 }
 
 func Pre(rate float64, term int) (ResultPre, error) {
+	if rate <= 0 {
+		return ResultPre{}, errors.New("A taxa deve ser maior que zero.")
+	}
+	
 	if term <= 0 {
 		return ResultPre{}, errors.New("Prazo deve ser maior que zero")
 	}	
@@ -24,6 +28,8 @@ func Pre(rate float64, term int) (ResultPre, error) {
 	result := rate * (1 - taxRate)
 	result = math.Round(result*100) / 100
 
-	return ResultPre{ResultPre: result, TaxRate: taxRate * 100}, nil
+	return ResultPre{
+		ResultPre: result,
+		TaxRate: taxRate * 100,
+	}, nil
 }
-
