@@ -33,7 +33,6 @@ func ParseIPCA(data []map[string]interface{}) (float64, error) {
 	return ipca, nil
 }
 
-
 func ParseSelic(data []map[string]interface{}) (float64, error) {
 
 	if len(data) == 0 {
