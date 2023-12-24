@@ -20,3 +20,26 @@ func ShowIPCAResult(result calculus.ResultIPCA) {
 func ShowPropResult(result calculus.ResultProp) {
     fmt.Printf("Proporcional: %.2f%% \nSelic Hoje: %.2f%%\n", result.ResultProp, result.Selic)
 }
+
+func ShowUsage() {
+	fmt.Println("Uso: profit <modalidade> <taxa> <prazo>")
+	fmt.Println("Use 'profit --help' para obter mais informações.")
+}
+
+
+func ShowModal() {
+	fmt.Println("Modalidade Inválida. Escolha entre pre, pos, ipca ou prop.")
+}
+
+func ShowHelp() {
+	fmt.Println("Uso: profit <modalidade> <taxa> <prazo> \n")
+	fmt.Println("Parametros: ")
+	fmt.Println("   Modalidades: Digite, pre, pos, ipca ou prop para escolher a modalidade de cálculo ")
+	fmt.Println("   Taxa: Digite a taxa ao ano usando pontos como separador. Ex: 11.62 ")
+	fmt.Println("   Prazo: (Opcional) Digite o prazo em dias conforme anúnciado no contrato. Ex: 721 \n")
+	fmt.Println("   --help   Show this help message")
+}
+
+func ShowVersion() {
+	fmt.Println("proft version 0.2")
+}
