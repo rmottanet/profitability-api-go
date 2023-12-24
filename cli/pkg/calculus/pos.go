@@ -2,7 +2,6 @@ package calculus
 
 import (
 	"fmt"
-	"math"
 	"errors"
 	"profitability/cli/pkg/fetcher"
 	"profitability/cli/pkg/util"
@@ -32,11 +31,8 @@ func Pos(rate float64, term int) (ResultPos, error) {
 		return ResultPos{}, errors.New("Error: " + err.Error())
 	}
 
-	result := (rate * selic / 100) * (1 - taxRate)
-	result = math.Round(result*100) / 100
-
 	return ResultPos{
-		ResultPos: result, 
+		ResultPos: (rate * selic / 100) * (1 - taxRate), 
 		TaxRate: taxRate * 100,
 	}, nil
 }

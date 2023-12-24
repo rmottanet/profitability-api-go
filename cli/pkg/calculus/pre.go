@@ -1,7 +1,6 @@
 package calculus
 
 import (
-	"math"
 	"errors"
 	"profitability/cli/pkg/util"
 )
@@ -25,11 +24,8 @@ func Pre(rate float64, term int) (ResultPre, error) {
 		return ResultPre{}, errors.New("Error: " + err.Error())
 	}
 
-	result := rate * (1 - taxRate)
-	result = math.Round(result*100) / 100
-
 	return ResultPre{
-		ResultPre: result,
+		ResultPre: rate * (1 - taxRate),
 		TaxRate: taxRate * 100,
 	}, nil
 }

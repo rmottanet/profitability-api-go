@@ -23,7 +23,6 @@ func main() {
 	modalidade := os.Args[1]
 	taxaStr := os.Args[2]
 
-	// Verificar se a modalidade é válida
 	if !util.IsValidModalidade(modalidade) {
 		log.Fatal("Modalidade Inválida. Escolha entre pre, pos, ipca ou prop.")
 	}
@@ -44,7 +43,7 @@ func main() {
 		display.ShowPropResult(result)
 		
 	} else {
-		// Se a modalidade não for "prop", verificar o prazo e chamar a rota correspondente
+
 		if len(os.Args) != 4 {
 			log.Fatal("Uso: profit <modalidade> <taxa> <prazo>")
 		}

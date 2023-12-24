@@ -2,7 +2,6 @@ package calculus
 
 import (
 	"fmt"
-	"math"
 	"errors"
 	"profitability/cli/pkg/fetcher"
 	"profitability/cli/pkg/util"
@@ -32,11 +31,8 @@ func IPCA(rate float64, term int) (ResultIPCA, error) {
 		return ResultIPCA{}, errors.New("Error: " + err.Error())
 	}
 
-	result := (rate + ipca / 100) * (1 - taxRate)
-	result = math.Round(result*100) / 100
-
 	return ResultIPCA{
-		ResultIPCA: result, 
+		ResultIPCA: (rate + ipca / 100) * (1 - taxRate), 
 		TaxRate: taxRate * 100,
 	}, nil
 }
