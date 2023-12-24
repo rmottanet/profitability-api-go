@@ -6,11 +6,11 @@ import (
 )
 
 func ShowPreResult(result calculus.ResultPre) {
-    fmt.Printf("Pré Fixado \nLiq: %.2f%% \nIR: %.2f%%\n", result.ResultPre, result.TaxRate)
+    fmt.Printf("Pré Fixado: \nLiq: %.2f%% \nIR: %.2f%%\n", result.ResultPre, result.TaxRate)
 }
 
 func ShowPosResult(result calculus.ResultPos) {
-    fmt.Printf("Pós Fixado \nLiq: %.2f%% \nIR: %.2f%%\n", result.ResultPos, result.TaxRate)
+    fmt.Printf("Pós Fixado: \nLiq: %.2f%% \nIR: %.2f%%\n", result.ResultPos, result.TaxRate)
 }
 
 func ShowIPCAResult(result calculus.ResultIPCA) {
