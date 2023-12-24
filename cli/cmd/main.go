@@ -2,8 +2,7 @@ package main
 
 import (
 	"os"
-	"profitability/cli/pkg/calculus"
-	"profitability/cli/pkg/util"
+	"profitability/cli/pkg/handler"
 	"profitability/cli/pkg/display"
 )
 
@@ -26,23 +25,15 @@ func main() {
 	
 	// Extrai os argumentos
 	modalidade := os.Args[1]
-
-	// Valida a modalidade
-	if !util.IsValidModalidade(modalidade) {
-		display.ShowModal()
-		return
-	}
+	handler.HandleModal(modalidade)
 
 	// Valida e converte a taxa para um valor numérico
 	taxaStr := os.Args[2]
-	taxa, err := util.IsValidTaxa(taxaStr)
-	util.ErrorHandler(err)
+	taxa := handler.HandleTaxa(taxaStr)
 
 	// Realiza cálculos com base na modalidade
 	if modalidade == "prop" {
-		result, err := calculus.Prop(taxa)
-		util.ErrorHandler(err)
-		display.ShowPropResult(result)
+		handler.HandleProp(taxa)
 		
 	} else {
 		
@@ -54,25 +45,20 @@ func main() {
 		
 		// Extrai e valida o terceiro argumento da linha de comando (prazo)
 		prazoStr := os.Args[3]
-		prazo, err := util.IsValidPrazo(prazoStr)
-		util.ErrorHandler(err)
+		prazo := handler.HandlePrazo(prazoStr)
 		
 		// Realiza cálculos com base na modalidade selecionada
 		switch modalidade {
 		case "pre":
-			result, err := calculus.Pre(taxa, prazo)
-			util.ErrorHandler(err)
-			display.ShowPreResult(result)
+			handler.HandlePre(taxa, prazo)
 
 		case "pos":
-			result, err := calculus.Pos(taxa, prazo)
-			util.ErrorHandler(err)
-			display.ShowPosResult(result)
+			handler.HandlePos(taxa, prazo)
 
 		case "ipca":
-			result, err := calculus.IPCA(taxa, prazo)
-			util.ErrorHandler(err)
-			display.ShowIPCAResult(result)
+			handler.HandleIPCA(taxa, prazo)
 		}
 	}
 }
+
+
