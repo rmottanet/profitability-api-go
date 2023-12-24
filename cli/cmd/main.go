@@ -26,7 +26,6 @@ func main() {
 	
 	// Extrai os argumentos
 	modalidade := os.Args[1]
-	taxaStr := os.Args[2]
 
 	// Valida a modalidade
 	if !util.IsValidModalidade(modalidade) {
@@ -35,6 +34,7 @@ func main() {
 	}
 
 	// Valida e converte a taxa para um valor numérico
+	taxaStr := os.Args[2]
 	taxa, err := util.IsValidTaxa(taxaStr)
 	util.ErrorHandler(err)
 
