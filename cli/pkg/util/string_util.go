@@ -32,3 +32,23 @@ func ParseIPCA(data []map[string]interface{}) (float64, error) {
 
 	return ipca, nil
 }
+
+
+func ParseSelic(data []map[string]interface{}) (float64, error) {
+
+	if len(data) == 0 {
+		return 0, fmt.Errorf("nenhum dado retornado")
+	}
+	
+	selicStr, ok := data[0]["valor"].(string)
+	if !ok {
+		return 0, fmt.Errorf("valor não é uma string")
+	}
+
+	selic, err := ParseFloat(selicStr)
+	if err != nil {
+		return 0, fmt.Errorf("erro ao processar dados SELIC: %v", err)
+	}
+	
+	return selic, nil
+}

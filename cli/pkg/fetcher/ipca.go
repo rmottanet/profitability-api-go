@@ -2,31 +2,17 @@ package fetcher
 
 import (
 	"fmt"
-	"net/http"
-	"encoding/json"
 	"profitability/cli/pkg/util"
+	"profitability/cli/pkg/api"
 )
 
-var UrlIPCA = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.433/dados/ultimos/12?formato=json"
-
 func FetchIPCA() (float64, error) {
-	response, err := http.Get(UrlIPCA)
+	response, err := FetchData(api.UrlIPCA)
 	if err != nil {
-		return 0, fmt.Errorf("erro ao fazer a requisição HTTP: %v", err)
-	}
-	defer response.Body.Close()
-
-	var data []map[string]interface{}
-	err = json.NewDecoder(response.Body).Decode(&data)
-	if err != nil {
-		return 0, fmt.Errorf("erro ao decodificar resposta JSON: %v", err)
-	}
-
-	if len(data) == 0 {
-		return 0, fmt.Errorf("nenhum dado retornado")
+		return 0, err
 	}
 	
-	ipca, err := util.ParseIPCA(data)
+	ipca, err := util.ParseIPCA(response)
 	if err != nil {
 		return 0, fmt.Errorf("erro ao processar dados IPCA: %v", err)
 	}
