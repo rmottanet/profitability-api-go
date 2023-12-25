@@ -32,13 +32,13 @@ func HandleModal(modalidade string) {
 
 func HandleTaxa(taxaStr string) (float64) {
 	taxa, err := util.IsValidTaxa(taxaStr)
-	util.ErrorHandler(err)
+	ErrorHandler(err)
 	return taxa
 }
 
 func HandlePrazo(prazoStr string) (int) {
 	prazo, err := util.IsValidPrazo(prazoStr)
-	util.ErrorHandler(err)
+	ErrorHandler(err)
 	return prazo
 }
 
