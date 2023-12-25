@@ -3,33 +3,17 @@ package main
 import (
 	"os"
 	"profitability/cli/pkg/handler"
-	"profitability/cli/pkg/display"
 )
 
 func main() {
-	// Verifica se há argumentos de linha de comando
-	if len(os.Args) < 2 {
-		display.ShowUsage()
-		return
-	}
-
-	if len(os.Args) == 2 && os.Args[1] == "--help" {
-		display.ShowHelp()
-		return
-	}
-
-	if len(os.Args) == 2 && os.Args[1] == "--version" {
-		display.ShowVersion()
-		return
-	}
+	handler.HandleEntry()
 	
 	// Extrai os argumentos
 	modalidade := os.Args[1]
 	handler.HandleModal(modalidade)
 
 	// Valida e converte a taxa para um valor numérico
-	taxaStr := os.Args[2]
-	taxa := handler.HandleTaxa(taxaStr)
+	taxa := handler.HandleTaxa(os.Args[2])
 
 	// Realiza cálculos com base na modalidade
 	if modalidade == "prop" {
@@ -37,15 +21,10 @@ func main() {
 		
 	} else {
 		
-		// Para outras modalidades, verifica se o número correto de argumentos é fornecido
-		if len(os.Args) != 4 {
-			display.ShowUsage()
-			return
-		}
+		handler.HandleFinal()
 		
 		// Extrai e valida o terceiro argumento da linha de comando (prazo)
-		prazoStr := os.Args[3]
-		prazo := handler.HandlePrazo(prazoStr)
+		prazo := handler.HandlePrazo(os.Args[3])
 		
 		// Realiza cálculos com base na modalidade selecionada
 		switch modalidade {
