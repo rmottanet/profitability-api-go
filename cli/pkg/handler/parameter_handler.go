@@ -7,27 +7,26 @@ import (
 )
 
 func HandleEntry() {
-	// Verifica se há argumentos de linha de comando
 	if len(os.Args) < 2 {
 		display.ShowUsage()
-		return
+		os.Exit(0)
 	}
 
 	if len(os.Args) == 2 && os.Args[1] == "--help" {
 		display.ShowHelp()
-		return
+		os.Exit(0)
 	}
 
 	if len(os.Args) == 2 && os.Args[1] == "--version" {
 		display.ShowVersion()
-		return
+		os.Exit(0)
 	}
 }
 
 func HandleModal(modalidade string) {
 	if !util.IsValidModalidade(modalidade) {
 		display.ShowModal()
-		return
+		os.Exit(0)
 	}
 }
 
@@ -44,9 +43,8 @@ func HandlePrazo(prazoStr string) (int) {
 }
 
 func HandleFinal() {
-		// Para outras modalidades, verifica se o número correto de argumentos é fornecido
-		if len(os.Args) != 4 {
-			display.ShowUsage()
-			return
-		}
+	if len(os.Args) != 4 {
+		display.ShowUsage()
+		os.Exit(0)
+	}
 }

@@ -13,12 +13,8 @@ type ResultIPCA struct {
 }
 
 func IPCA(rate float64, term int) (ResultIPCA, error) {
-	if rate <= 0 {
-		return ResultIPCA{}, errors.New("A taxa deve ser maior que zero.")
-	}
-
-	if term <= 0 {
-		return ResultIPCA{}, errors.New("Prazo deve ser maior que zero")
+	if rate <= 0 || term <= 0 {
+		return ResultPre{}, errors.New("Os valores devem ser maiores que zero.")
 	}
 
 	ipca, err := fetcher.FetchIPCA()

@@ -46,7 +46,7 @@ func ParseSelic(data []map[string]interface{}) (float64, error) {
 
 	selic, err := ParseFloat(selicStr)
 	if err != nil {
-		return 0, fmt.Errorf("erro ao processar dados SELIC: %v", err)
+		return 0, fmt.Errorf("erro ao converter valor SELIC: %v", err)
 	}
 	
 	return selic, nil

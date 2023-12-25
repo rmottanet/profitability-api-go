@@ -13,12 +13,8 @@ type ResultPos struct {
 }
 
 func Pos(rate float64, term int) (ResultPos, error) {
-	if rate <= 0 {
-		return ResultPos{}, errors.New("A taxa deve ser maior que zero.")
-	}
-	
-	if term <= 0 {
-		return ResultPos{}, errors.New("Prazo deve ser maior que zero")
+	if rate <= 0 || term <= 0 {
+		return ResultPre{}, errors.New("Os valores devem ser maiores que zero.")
 	}	
 
 	selic, err := fetcher.FetchSelic()

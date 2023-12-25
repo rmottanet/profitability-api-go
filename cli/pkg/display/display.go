@@ -32,12 +32,12 @@ func ShowModal() {
 }
 
 func ShowHelp() {
-	fmt.Println("Uso: profit <modalidade> <taxa> <prazo> \n")
-	fmt.Println("Parametros: ")
+	fmt.Println("Uso: profit <modalidade> <taxa> <prazo>")
+	fmt.Println("\nParametros: ")
 	fmt.Println("   Modalidades: Digite, pre, pos, ipca ou prop para escolher a modalidade de cálculo ")
 	fmt.Println("   Taxa: Digite a taxa ao ano usando pontos como separador. Ex: 11.62 ")
-	fmt.Println("   Prazo: (Opcional) Digite o prazo em dias conforme anúnciado no contrato. Ex: 721 \n")
-	fmt.Println("   --help   Show this help message")
+	fmt.Println("   Prazo: (Opcional) Digite o prazo em dias conforme anúnciado no contrato. Ex: 721")
+	fmt.Println("\n   --help   Mosta esta mensagem.")
 }
 
 func ShowVersion() {

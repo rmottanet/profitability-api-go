@@ -7,7 +7,8 @@ import (
 )
 
 func FetchIPCA() (float64, error) {
-	response, err := FetchData(api.UrlIPCA)
+	url := api.GetUrl("ipca")
+	response, err := FetchData(url)
 	if err != nil {
 		return 0, err
 	}
