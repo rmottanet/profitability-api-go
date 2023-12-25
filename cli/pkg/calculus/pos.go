@@ -14,7 +14,7 @@ type ResultPos struct {
 
 func Pos(rate float64, term int) (ResultPos, error) {
 	if rate <= 0 || term <= 0 {
-		return ResultPre{}, errors.New("Os valores devem ser maiores que zero.")
+		return ResultPos{}, errors.New("Os valores devem ser maiores que zero.")
 	}	
 
 	selic, err := fetcher.FetchSelic()
