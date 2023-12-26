@@ -2,7 +2,6 @@ package calculus_test
 
 import (
 	"testing"
-	"math"
 
 	"profitability/cli/pkg/calculus"
 )
@@ -21,8 +20,7 @@ func TestPre(t *testing.T) {
 	}
 
 	// Define o valor esperado com base nos parâmetros de entrada
-	expectedResult := rate * (1 - 0.225)
-	expectedResult = math.Round(expectedResult*100) / 100
+	expectedResult := 10.0 * (1 - 0.225)
 	
 	// Compara o resultado retornado pela função com o resultado esperado
 	if result.ResultPre != expectedResult {

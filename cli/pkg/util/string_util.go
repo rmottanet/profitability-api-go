@@ -15,6 +15,10 @@ func ParseFloat(s string) (float64, error) {
 
 func ParseIPCA(data []map[string]interface{}) (float64, error) {
 	var ipca float64
+	
+	if len(data) == 0 {
+		return 0, fmt.Errorf("nenhum dado retornado")
+	}
 
 	for _, entry := range data {
 		valorStr, ok := entry["valor"].(string)
