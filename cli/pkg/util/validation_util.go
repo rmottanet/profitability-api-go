@@ -7,18 +7,18 @@ import (
 	"strconv"
 )
 
-func IsValidModalidade(modalidade string) bool {
-	validModalidades := map[string]bool{
+func IsValidFunctionality(functionality string) bool {
+	validFunctionalitys := map[string]bool{
 		"pre":  true,
 		"pos":  true,
 		"ipca": true,
 		"prop": true,
 	}
 
-	return validModalidades[modalidade]
+	return validFunctionalitys[functionality]
 }
 
-func IsValidTaxa(value string) (float64, error) {
+func IsValidRate(value string) (float64, error) {
     parsedValue, err := strconv.ParseFloat(value, 64)
     if err != nil {
         return 0, fmt.Errorf("valor inválido para float: %v", err)
@@ -31,7 +31,7 @@ func IsValidTaxa(value string) (float64, error) {
     return parsedValue, nil
 }
 
-func IsValidPrazo(value string) (int, error) {
+func IsValidTerm(value string) (int, error) {
 	parsedValue, err := strconv.ParseInt(value, 10, 64)
 	if err != nil {
 		return 0, fmt.Errorf("valor inválido para int: %v", err)

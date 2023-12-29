@@ -23,23 +23,23 @@ func HandleEntry() {
 	}
 }
 
-func HandleModal(modalidade string) {
-	if !util.IsValidModalidade(modalidade) {
+func HandleModal(functionality string) {
+	if !util.IsValidFunctionality(functionality) {
 		display.ShowModal()
 		os.Exit(0)
 	}
 }
 
-func HandleTaxa(taxaStr string) (float64) {
-	taxa, err := util.IsValidTaxa(taxaStr)
+func HandleRate(rateStr string) (float64) {
+	rate, err := util.IsValidRate(rateStr)
 	ErrorHandler(err)
-	return taxa
+	return rate
 }
 
-func HandlePrazo(prazoStr string) (int) {
-	prazo, err := util.IsValidPrazo(prazoStr)
+func HandleTerm(termStr string) (int) {
+	term, err := util.IsValidTerm(termStr)
 	ErrorHandler(err)
-	return prazo
+	return term
 }
 
 func HandleFinal() {
