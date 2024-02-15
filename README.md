@@ -1,22 +1,65 @@
-# CLI da Rentabilidade - Calcule Seu Lucro, ou Não 💸
+# Profitability Golang
 
-Bem-vindo ao CLI da Rentabilidade, a ferramenta que te dirá exatamente quanto dinheiro você está (ou não) ganhando nos seus investimentos! Porque quem precisa de riqueza, certo?
+## ctrl+s :v:
 
-## Sobre
+O Profitability é uma API RESTful que fornece a rentabilidade líquida e a tributação correspondente para investimentos de renda fixa, como CBD, CRI, LC, LCA e LCI, pré ou pós-fixados, com referência à SELIC ou ao IPCA.
 
-Este projeto magnífico é uma aplicação de linha de comando que devora avidamente a API do Banco Central do Brasil. O objetivo? Informar com uma rapidez impressionante a rentabilidade líquida de contratos de CDB, LC, LCI e LCA, com referência a Selic ou IPCA. Mágico, não?
 
-### Modalidades Disponíveis
+## Funcionalidades:
 
-1. **Pré-Fixado**: Porque quem precisa de certezas na vida?
-2. **Pós-Fixado**: Porque prever o futuro é superestimado.
-3. **Pós-Fixado no IPCA + Taxa Fixa**: Porque adoramos adicionar complexidade à nossa vida financeira.
+- A API RESTful oferece cinco rotas principais:
+  - Recuperação de dados em cache obtidos de consultas a dados diretamente obtidos do Banco Central através de sua [API](https://www.bcb.gov.br/).
+  - Cálculo da rentabilidade líquida considerando o desconto de impostos, a partir da taxa bruta nominal do contrato e da duração do contrato.
 
-Se estiver se sentindo aventureiro, há o cálculo proporcional. Perfeito para contratos não tributados como LCI e LCA. Sim, isso mesmo, proporcional! Porque quem quer entender completamente suas finanças, não é mesmo?
 
-## Como Usar
+## Configuração e Inicialização:
 
-1. Clone este repositório.
-2. Execute `go run main.go --help` e deixe a magia acontecer.
+- A aplicação carrega a configuração do ambiente, incluindo a porta na qual o servidor será executado.
+- Utiliza o pacote `mux` para roteamento HTTP e `cors` para lidar com solicitações CORS.
+- Inicializa serviços, controladores e cache.
+- Integra-se com APIs externas para obter dados, como as taxas SELIC e IPCA.
 
-Pronto! Agora você está no caminho para descobrir se está ficando rico ou apenas pagando mais impostos. Divirta-se! 💰
+
+## Uso
+
+Para usar a API de Rentabilidade, os desenvolvedores precisam enviar solicitações HTTP para os pontos finais designados. A API responde com dados JSON contendo as informações solicitadas ou valores de moeda convertidos.
+
+
+## API Endpoints
+
+
+- **Taxas Atuais:**
+
+  Este endpoint retorna as taxas de juros SELIC e IPCA utilizadas nos cálculos de rentabilidade.
+  
+  Endpoint:
+  
+  GET /api/taxas
+  
+  Exemplo de Uso:
+  
+  ```bash
+  curl "http://localhost:8000/api/taxas"
+  ```
+  
+  Este exemplo retorna as taxas SELIC e IPCA em formato JSON.
+
+
+Para obter informações mais detalhadas sobre as rotas e suas funcionalidades, consulte a [documentação central da API](https://rmottanet.gitbook.io/profitability).
+
+
+## Contribuições
+
+Contribuições para o projeto da API de Rentabilidade são bem-vindas! Se você tiver ideias para melhorias, solicitações de funcionalidades ou relatórios de bugs, sinta-se à vontade para abrir um problema ou enviar um pull request.
+
+Obrigado por considerar a API de Rentabilidade para suas necessidades de cálculo. Se você tiver alguma dúvida ou precisar de mais assistência, não hesite em entrar em contato. Feliz codificação! 🚀
+
+<br />
+<br />
+<p align="center">
+<a href="https://gitlab.com/rmotta.net"><img src="https://img.shields.io/badge/Gitlab--_.svg?style=social&logo=gitlab" alt="GitLab"></a>
+<a href="https://github.com/rmottanet"><img src="https://img.shields.io/badge/Github--_.svg?style=social&logo=github" alt="GitHub"></a>
+<a href="https://instagram.com/rmottanet/"><img src="https://img.shields.io/badge/Instagram--_.svg?style=social&logo=instagram" alt="Instagram"></a>
+<a href="https://www.linkedin.com/in/rmottanet/"><img src="https://img.shields.io/badge/Linkedin--_.svg?style=social&logo=linkedin" alt="Linkedin"></a>
+</p>
+<br />

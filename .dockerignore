@@ -1,0 +1,7 @@
+README.md
+.env.ex
+.gitignore
+.github
+.git
+
+tests/
